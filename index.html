@@ -1,10 +1,293 @@
 <!doctype html>
-<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Daily Dose Destek</title>
-<style>body{font:16px/1.6 -apple-system,system-ui,sans-serif;max-width:640px;margin:0 auto;padding:24px 16px;color:#16211c}h1{color:#157a55}h2{margin-top:1.6em}a{color:#157a55}</style></head><body>
-<h1>Daily Dose</h1>
-<p>Vitamin ve takviyeler için hatırlatma ve uyum takibi uygulaması.</p>
-<h2>Destek</h2>
-<p>Sorun bildirmek veya öneri göndermek için: <a href="mailto:altas.erayy@gmail.com">altas.erayy@gmail.com</a></p>
-<p><a href="privacy.html">Gizlilik politikası</a></p>
-</body></html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily Dose</title>
+<meta name="description" content="Daily Dose: vitamin ve takviyeler için hatırlatma ve uyum takibi.">
+<meta name="theme-color" content="#157a55">
+<meta property="og:title" content="Daily Dose">
+<meta property="og:description" content="Vitamin ve takviyeler için hatırlatma ve uyum takibi.">
+<meta property="og:image" content="https://erayaltas.github.io/daily-dose-site/assets/en/today.webp">
+<style>
+:root{
+  --brand:#157a55;--brand-2:#2fb583;--soft:#e3f3ec;--bg:#f4f8f6;--card:#fff;
+  --text:#16211c;--muted:#6a7a73;--line:#dfe8e4;
+}
+@media (prefers-color-scheme:dark){
+  :root{--brand:#2fb583;--brand-2:#157a55;--soft:#1b3a2f;--bg:#0f1613;--card:#19231f;--text:#eef4f1;--muted:#9aaaa3;--line:#2a3631}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--text);font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--brand)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* üst çubuk */
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;color:var(--text);text-decoration:none}
+.logo i{width:34px;height:34px;border-radius:9px;background:linear-gradient(160deg,var(--brand-2),var(--brand));display:grid;place-items:center;color:#fff;font-style:normal;font-size:18px}
+nav select{font:inherit;font-size:15px;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 10px}
+
+/* hero */
+.hero{text-align:center;padding:36px 0 8px}
+.hero h1{font-size:clamp(38px,7vw,68px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px;font-weight:800}
+.hero h1 span{background:linear-gradient(90deg,var(--brand-2),var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:560px;margin:0 auto 26px;color:var(--muted);font-size:clamp(17px,2.4vw,21px)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:16px;font-weight:600;text-decoration:none;font-size:17px}
+.btn.primary{background:var(--brand);color:#fff}
+.btn.soon{background:var(--soft);color:var(--brand)}
+.note{display:block;margin-top:10px;font-size:14px;color:var(--muted)}
+
+/* telefonlar */
+.phones{display:flex;gap:26px;justify-content:center;align-items:flex-start;margin:44px auto 0;padding:0 20px 8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.phone{flex:0 0 auto;width:min(250px,64vw);scroll-snap-align:center;margin:0}
+.phone:nth-child(even){margin-top:38px}
+.phone div{border:9px solid #14161a;border-radius:38px;overflow:hidden;position:relative;background:#14161a;box-shadow:0 24px 50px rgba(21,122,85,.25)}
+.phone div::before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:34%;height:15px;border-radius:10px;background:#000;z-index:2}
+.phone img{display:block;width:100%;height:auto}
+.phone figcaption{text-align:center;font-size:14px;color:var(--muted);margin-top:12px}
+@media (min-width:1100px){.phones{overflow:visible;gap:22px}.phone{width:188px}}
+
+/* bölümler */
+section{padding:72px 0 0}
+h2{font-size:clamp(28px,4.5vw,40px);line-height:1.12;letter-spacing:-.015em;margin:0 0 12px;text-align:center}
+.lead{max-width:600px;margin:0 auto 34px;color:var(--muted);text-align:center}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px}
+.card .ic{width:44px;height:44px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:22px;margin-bottom:14px}
+.card h3{margin:0 0 6px;font-size:19px}
+.card p{margin:0;color:var(--muted);font-size:16px}
+
+.plans{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));max-width:760px;margin:0 auto}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px}
+.plan.pro{border:2px solid var(--brand)}
+.plan h3{margin:0 0 4px;font-size:22px}
+.plan small{color:var(--muted)}
+.plan ul{list-style:none;padding:0;margin:16px 0 0}
+.plan li{padding:6px 0 6px 28px;position:relative}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--brand);font-weight:700}
+
+.privacy{background:var(--soft);border-radius:26px;padding:34px 24px;text-align:center}
+.privacy h2{margin-bottom:10px}
+.privacy p{max-width:620px;margin:0 auto 18px;color:var(--muted)}
+
+footer{margin-top:72px;padding:30px 0 46px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:14px}
+footer p{margin:0 0 8px;max-width:720px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#"><i>💊</i>Daily Dose</a>
+    <nav>
+      <select id="lang" aria-label="Language">
+        <option value="tr">Türkçe</option>
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1 data-i18n-html="h1"></h1>
+      <p data-i18n="sub"></p>
+      <span id="cta"></span>
+    </div>
+
+    <div class="phones" id="phones"></div>
+
+    <section id="features">
+      <h2 data-i18n="featuresTitle"></h2>
+      <div class="grid">
+        <div class="card"><div class="ic">🔔</div><h3 data-i18n="f1t"></h3><p data-i18n="f1d"></p></div>
+        <div class="card"><div class="ic">📱</div><h3 data-i18n="f2t"></h3><p data-i18n="f2d"></p></div>
+        <div class="card"><div class="ic">🗓️</div><h3 data-i18n="f3t"></h3><p data-i18n="f3d"></p></div>
+        <div class="card"><div class="ic">📊</div><h3 data-i18n="f4t"></h3><p data-i18n="f4d"></p></div>
+        <div class="card"><div class="ic">🔒</div><h3 data-i18n="f5t"></h3><p data-i18n="f5d"></p></div>
+        <div class="card"><div class="ic">🌍</div><h3 data-i18n="f6t"></h3><p data-i18n="f6d"></p></div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <h2 data-i18n="plansTitle"></h2>
+      <p class="lead" data-i18n="plansLead"></p>
+      <div class="plans">
+        <div class="plan">
+          <h3 data-i18n="freeName"></h3><small data-i18n="freeSub"></small>
+          <ul>
+            <li data-i18n="free1"></li><li data-i18n="free2"></li><li data-i18n="free3"></li><li data-i18n="free4"></li>
+          </ul>
+        </div>
+        <div class="plan pro">
+          <h3>Daily Dose Pro</h3><small data-i18n="proSub"></small>
+          <ul>
+            <li data-i18n="pro1"></li><li data-i18n="pro2"></li><li data-i18n="pro3"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="privacy">
+        <h2 data-i18n="privTitle"></h2>
+        <p data-i18n="privText"></p>
+        <a class="btn primary" href="privacy.html" data-i18n="privLink"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="support">
+    <div class="row">
+      <a href="privacy.html" data-i18n="privLink"></a>
+      <a href="mailto:altas.erayy@gmail.com" data-i18n="contact"></a>
+    </div>
+    <p data-i18n="disclaimer"></p>
+    <p>© 2026 Eray Altas</p>
+  </footer>
+</div>
+
+<script>
+// App Store'da yayınlanınca buraya uygulamanın bağlantısını yaz (ör. "https://apps.apple.com/app/id123456789").
+const APP_STORE_URL = "";
+
+const T = {
+  tr: {
+    h1: "Hiçbir dozu <span>kaçırma</span>",
+    sub: "Vitamin ve takviyelerin için hatırlatma ve uyum takibi. Basit, gizli ve ücretsiz başlar.",
+    cta: "Yakında App Store'da", ctaGo: "App Store'dan indir", ctaNote: "iPhone için",
+    cap: ["Bugün", "İstatistikler", "Takviyeler", "Widget", "Hatırlatma"],
+    featuresTitle: "İhtiyacın olan her şey, fazlası değil",
+    f1t: "Zamanında hatırlatma", f1d: "Doğru saatte bildirim gelir; uygulamayı açmadan \"Aldım\" de ya da ertele.",
+    f2t: "Ana ekran widget'ları", f2d: "Sıradaki dozunu gör ve tek dokunuşla işaretle.",
+    f3t: "Esnek planlar", f3d: "Günde istediğin kadar doz, belirli günler ve bitiş tarihli kürler.",
+    f4t: "İlerleme tek bakışta", f4d: "Doz uyumu, seriler ve takvimde tüm geçmişin.",
+    f5t: "Varsayılan olarak gizli", f5d: "Her şey cihazında kalır. Hesap, reklam ve takip yok.",
+    f6t: "5 dilde", f6d: "Türkçe, English, Deutsch, Español ve Français.",
+    plansTitle: "Ücretsiz başla", plansLead: "Temel her şey ücretsiz. Daha fazlası için tek seferlik bir satın alma; abonelik yok.",
+    freeName: "Ücretsiz", freeSub: "Her zaman",
+    free1: "3 takviyeye kadar", free2: "Hatırlatmalar ve widget'lar", free3: "Takvim geçmişi", free4: "7 günlük istatistikler",
+    proSub: "Tek seferlik satın alma",
+    pro1: "Sınırsız takviye", pro2: "30 ve 90 günlük istatistikler", pro3: "Geliştiriciyi desteklersin",
+    privTitle: "Verilerin yalnızca sende", privText: "Takviye adların, planların ve kayıtların yalnızca cihazında saklanır. Hesap gerekmez; reklam, analiz veya üçüncü taraf takip aracı yoktur.",
+    privLink: "Gizlilik politikası", contact: "İletişim ve destek",
+    disclaimer: "Daily Dose bir hatırlatma ve takip aracıdır; tıbbi tavsiye vermez. Takviye veya ilaç kullanımı konusunda doktorunuza veya eczacınıza danışın."
+  },
+  en: {
+    h1: "Never miss <span>a dose</span>",
+    sub: "Reminders and adherence tracking for your vitamins and supplements. Simple, private, and free to start.",
+    cta: "Coming soon to the App Store", ctaGo: "Download on the App Store", ctaNote: "For iPhone",
+    cap: ["Today", "Statistics", "Supplements", "Widget", "Reminder"],
+    featuresTitle: "Everything you need, nothing you don't",
+    f1t: "Timely reminders", f1d: "Get a notification at the right time and tap \"Taken\" or snooze without opening the app.",
+    f2t: "Home Screen widgets", f2d: "See your next dose and mark it with one tap.",
+    f3t: "Flexible schedules", f3d: "Any number of doses a day, specific weekdays, and courses with an end date.",
+    f4t: "Progress at a glance", f4d: "Adherence, streaks, and your full history in a calendar.",
+    f5t: "Private by design", f5d: "Everything stays on your device. No account, no ads, no tracking.",
+    f6t: "In 5 languages", f6d: "Türkçe, English, Deutsch, Español and Français.",
+    plansTitle: "Start free", plansLead: "The essentials are free. Unlock more with a one-time purchase; no subscription.",
+    freeName: "Free", freeSub: "Always",
+    free1: "Up to 3 supplements", free2: "Reminders and widgets", free3: "Calendar history", free4: "7-day statistics",
+    proSub: "One-time purchase",
+    pro1: "Unlimited supplements", pro2: "30- and 90-day statistics", pro3: "Support the developer",
+    privTitle: "Your data stays with you", privText: "Supplement names, schedules, and logs are stored only on your device. No account is needed, and there are no ads, analytics, or third-party trackers.",
+    privLink: "Privacy policy (in Turkish)", contact: "Contact & support",
+    disclaimer: "Daily Dose is a reminder and tracking tool. It does not provide medical advice. Talk to your doctor or pharmacist about supplement or medication use."
+  },
+  de: {
+    h1: "Nie wieder <span>eine Dosis vergessen</span>",
+    sub: "Erinnerungen und Einnahmetreue für deine Vitamine und Präparate. Einfach, privat und kostenlos zum Start.",
+    cta: "Bald im App Store", ctaGo: "Laden im App Store", ctaNote: "Für iPhone",
+    cap: ["Heute", "Statistiken", "Supplements", "Widget", "Erinnerung"],
+    featuresTitle: "Alles, was du brauchst, nicht mehr",
+    f1t: "Rechtzeitige Erinnerungen", f1d: "Benachrichtigung zur richtigen Zeit; \"Genommen\" oder Schlummern, ohne die App zu öffnen.",
+    f2t: "Widgets für den Home-Bildschirm", f2d: "Sieh deine nächste Dosis und hake sie mit einem Tipp ab.",
+    f3t: "Flexible Pläne", f3d: "Beliebig viele Dosen pro Tag, bestimmte Wochentage und Kuren mit Enddatum.",
+    f4t: "Fortschritt auf einen Blick", f4d: "Einnahmetreue, Serien und deine gesamte Historie im Kalender.",
+    f5t: "Privat von Grund auf", f5d: "Alles bleibt auf deinem Gerät. Kein Konto, keine Werbung, kein Tracking.",
+    f6t: "In 5 Sprachen", f6d: "Türkçe, English, Deutsch, Español und Français.",
+    plansTitle: "Kostenlos starten", plansLead: "Das Wesentliche ist kostenlos. Mehr gibt es mit einem Einmalkauf; kein Abo.",
+    freeName: "Kostenlos", freeSub: "Immer",
+    free1: "Bis zu 3 Präparate", free2: "Erinnerungen und Widgets", free3: "Kalenderverlauf", free4: "Statistiken für 7 Tage",
+    proSub: "Einmalkauf",
+    pro1: "Unbegrenzt Präparate", pro2: "Statistiken für 30 und 90 Tage", pro3: "Unterstütze den Entwickler",
+    privTitle: "Deine Daten bleiben bei dir", privText: "Namen, Pläne und Einträge werden nur auf deinem Gerät gespeichert. Kein Konto nötig, keine Werbung, keine Analyse und keine Tracker von Dritten.",
+    privLink: "Datenschutzerklärung (auf Türkisch)", contact: "Kontakt & Support",
+    disclaimer: "Daily Dose ist ein Erinnerungs- und Tracking-Tool und gibt keine medizinische Beratung. Sprich mit deiner Ärztin, deinem Arzt oder deiner Apotheke zur Einnahme von Präparaten oder Medikamenten."
+  },
+  es: {
+    h1: "Nunca olvides <span>una dosis</span>",
+    sub: "Recordatorios y seguimiento de constancia para tus vitaminas y suplementos. Simple, privada y gratis para empezar.",
+    cta: "Próximamente en el App Store", ctaGo: "Descargar en el App Store", ctaNote: "Para iPhone",
+    cap: ["Hoy", "Estadísticas", "Suplementos", "Widget", "Recordatorio"],
+    featuresTitle: "Todo lo que necesitas, nada más",
+    f1t: "Recordatorios a tiempo", f1d: "Recibe una notificación en el momento justo y toca \"Tomado\" o pospón sin abrir la app.",
+    f2t: "Widgets en la pantalla de inicio", f2d: "Mira tu próxima dosis y márcala con un toque.",
+    f3t: "Planes flexibles", f3d: "Las dosis que quieras al día, días concretos y tratamientos con fecha de fin.",
+    f4t: "Tu progreso de un vistazo", f4d: "Constancia, rachas e historial completo en el calendario.",
+    f5t: "Privada por diseño", f5d: "Todo se queda en tu dispositivo. Sin cuenta, sin anuncios, sin rastreo.",
+    f6t: "En 5 idiomas", f6d: "Türkçe, English, Deutsch, Español y Français.",
+    plansTitle: "Empieza gratis", plansLead: "Lo esencial es gratis. Desbloquea más con una compra única; sin suscripción.",
+    freeName: "Gratis", freeSub: "Siempre",
+    free1: "Hasta 3 suplementos", free2: "Recordatorios y widgets", free3: "Historial en calendario", free4: "Estadísticas de 7 días",
+    proSub: "Compra única",
+    pro1: "Suplementos ilimitados", pro2: "Estadísticas de 30 y 90 días", pro3: "Apoyas al desarrollador",
+    privTitle: "Tus datos solo contigo", privText: "Los nombres, planes y registros se guardan solo en tu dispositivo. No necesitas cuenta y no hay anuncios, analítica ni rastreadores de terceros.",
+    privLink: "Política de privacidad (en turco)", contact: "Contacto y soporte",
+    disclaimer: "Daily Dose es una herramienta de recordatorio y seguimiento. No ofrece consejo médico. Consulta a tu médico o farmacéutico sobre el uso de suplementos o medicamentos."
+  },
+  fr: {
+    h1: "N'oubliez plus <span>une dose</span>",
+    sub: "Rappels et suivi de l'assiduité pour vos vitamines et compléments. Simple, privé et gratuit pour commencer.",
+    cta: "Bientôt sur l'App Store", ctaGo: "Télécharger sur l'App Store", ctaNote: "Pour iPhone",
+    cap: ["Aujourd'hui", "Statistiques", "Compléments", "Widget", "Rappel"],
+    featuresTitle: "Tout ce qu'il faut, rien de plus",
+    f1t: "Rappels à l'heure", f1d: "Recevez une notification au bon moment et touchez « Pris » ou reportez sans ouvrir l'app.",
+    f2t: "Widgets d'écran d'accueil", f2d: "Voyez votre prochaine dose et validez-la d'un geste.",
+    f3t: "Plans flexibles", f3d: "Autant de doses par jour que vous voulez, jours précis et cures avec date de fin.",
+    f4t: "Votre progression en un coup d'œil", f4d: "Assiduité, séries et historique complet dans le calendrier.",
+    f5t: "Privé par conception", f5d: "Tout reste sur votre appareil. Pas de compte, pas de pub, pas de suivi.",
+    f6t: "En 5 langues", f6d: "Türkçe, English, Deutsch, Español et Français.",
+    plansTitle: "Commencez gratuitement", plansLead: "L'essentiel est gratuit. Débloquez plus avec un achat unique ; sans abonnement.",
+    freeName: "Gratuit", freeSub: "Toujours",
+    free1: "Jusqu'à 3 compléments", free2: "Rappels et widgets", free3: "Historique du calendrier", free4: "Statistiques sur 7 jours",
+    proSub: "Achat unique",
+    pro1: "Compléments illimités", pro2: "Statistiques sur 30 et 90 jours", pro3: "Vous soutenez le développeur",
+    privTitle: "Vos données restent chez vous", privText: "Les noms, plans et enregistrements sont stockés uniquement sur votre appareil. Aucun compte requis, ni publicité, ni analyse, ni traceur tiers.",
+    privLink: "Politique de confidentialité (en turc)", contact: "Contact et assistance",
+    disclaimer: "Daily Dose est un outil de rappel et de suivi. Il ne donne pas de conseil médical. Demandez conseil à votre médecin ou pharmacien pour l'usage de compléments ou de médicaments."
+  }
+};
+const SHOTS = ["today", "stats", "list", "widget", "reminder"];
+
+function setLang(l) {
+  const t = T[l];
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i18n]").forEach(e => { e.textContent = t[e.dataset.i18n]; });
+  document.querySelectorAll("[data-i18n-html]").forEach(e => { e.innerHTML = t[e.dataset.i18nHtml]; });
+  document.getElementById("phones").innerHTML = SHOTS.map((s, i) =>
+    `<figure class="phone"><div><img src="assets/${l}/${s}.webp" alt="${t.cap[i]}" loading="${i < 3 ? "eager" : "lazy"}"></div><figcaption>${t.cap[i]}</figcaption></figure>`).join("");
+  document.getElementById("cta").innerHTML = APP_STORE_URL
+    ? `<a class="btn primary" href="${APP_STORE_URL}">${t.ctaGo}</a><span class="note">${t.ctaNote}</span>`
+    : `<span class="btn soon">${t.cta}</span><span class="note">${t.ctaNote}</span>`;
+  try { localStorage.setItem("lang", l); } catch (e) {}
+}
+
+const supported = Object.keys(T);
+let lang = null;
+try { lang = localStorage.getItem("lang"); } catch (e) {}
+if (!supported.includes(lang)) {
+  const nav = (navigator.language || "en").slice(0, 2).toLowerCase();
+  lang = supported.includes(nav) ? nav : "en";
+}
+const sel = document.getElementById("lang");
+sel.value = lang;
+sel.addEventListener("change", () => setLang(sel.value));
+setLang(lang);
+</script>
+</body>
+</html>
