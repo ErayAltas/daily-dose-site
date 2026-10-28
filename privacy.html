@@ -1,19 +1,137 @@
 <!doctype html>
-<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Daily Dose Gizlilik Politikası</title>
-<style>body{font:16px/1.6 -apple-system,system-ui,sans-serif;max-width:640px;margin:0 auto;padding:24px 16px;color:#16211c}h1{color:#157a55}h2{margin-top:1.6em}a{color:#157a55}</style></head><body>
-<h1>Daily Dose Gizlilik Politikası</h1>
-<p>Son güncelleme: 24 Ekim 2026</p>
-<h2>Verilerin yalnızca senin cihazında</h2>
-<p>Takviye adları, doz planları ve alım kayıtları yalnızca bu cihazda saklanır. Hiçbir sunucuya gönderilmez, hesap gerektirmez.</p>
-<h2>Bildirimler</h2>
-<p>Hatırlatmalar cihazın yerel bildirim sistemiyle oluşturulur. İnternet bağlantısı gerekmez.</p>
-<h2>Takip ve paylaşım</h2>
-<p>Uygulama analiz, reklam veya üçüncü taraf takip aracı içermez. Veriler üçüncü kişilerle paylaşılmaz.</p>
-<h2>Silme</h2>
-<p>Ayarlar &gt; Veri silme ile tüm verilerini kalıcı olarak silebilirsin. Uygulamayı kaldırmak da verileri siler.</p>
-<h2>Tıbbi uyarı</h2>
-<p>Daily Dose bir hatırlatma ve takip aracıdır; tıbbi tavsiye vermez. Takviye veya ilaç kullanımı konusunda doktorunuza veya eczacınıza danışın.</p>
-<h2>İletişim</h2>
-<p>Sorular için: <a href="mailto:altas.erayy@gmail.com">altas.erayy@gmail.com</a></p>
-</body></html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily Dose</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#2fb583">
+<style>
+:root{color-scheme:light;--g1:#2fb583;--g2:#157a55;--g3:#0d5c42;--bg:#f4f8f6;--text:#16211c;--muted:#5f6f68;--line:#dbe6e1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.65 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--g2)}
+.top{background:linear-gradient(170deg,var(--g1),var(--g2) 70%,var(--g3));color:#fff;padding:0 22px 44px}
+.bar{max-width:760px;margin:0 auto;padding:20px 0;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;color:#fff;text-decoration:none}
+.logo i{width:36px;height:36px;border-radius:10px;background:#fff;display:grid;place-items:center;font-style:normal;font-size:19px}
+select{font:inherit;font-size:15px;color:#fff;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:10px;padding:7px 10px}
+select option{color:#16211c}
+.title{max-width:760px;margin:18px auto 0}
+.title h1{font-size:clamp(32px,6vw,48px);line-height:1.08;letter-spacing:-.02em;margin:0 0 8px}
+.title p{margin:0;color:rgba(255,255,255,.85)}
+main{max-width:760px;margin:0 auto;padding:10px 22px 60px}
+h2{font-size:21px;margin:34px 0 6px}
+p{margin:0 0 12px;color:var(--muted)}
+.foot{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="bar">
+    <a class="logo" href="./"><i>💊</i>Daily Dose</a>
+    <select id="lang" aria-label="Language">
+      <option value="tr">Türkçe</option><option value="en">English</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fr">Français</option>
+    </select>
+  </div>
+  <div class="title"><h1 id="h1"></h1><p id="upd"></p></div>
+</div>
+<main>
+  <div id="body"></div>
+  <div class="foot"><a href="./" id="back"></a> · © 2026 Eray Altas</div>
+</main>
+<script>
+const MAIL = "altas.erayy@gmail.com";
+const T = {
+  tr: {
+    h1: "Gizlilik Politikası", upd: "Son güncelleme: 28 Ekim 2026", back: "Ana sayfa",
+    s: [
+      ["Verilerin yalnızca senin cihazında", "Takviye adları, doz planları ve alım kayıtları yalnızca bu cihazda saklanır. Hiçbir sunucuya gönderilmez, hesap gerektirmez."],
+      ["Bildirimler", "Hatırlatmalar cihazın yerel bildirim sistemiyle oluşturulur. İnternet bağlantısı gerekmez."],
+      ["Satın alma", "Daily Dose Pro tek seferlik bir uygulama içi satın almadır ve Apple tarafından işlenir. Ödeme bilgilerine erişimimiz yoktur; Apple'ın bize ilettiği bir kişisel veri bulunmaz. Satın alma durumu cihazında Apple'ın StoreKit sistemiyle doğrulanır."],
+      ["Takip ve paylaşım", "Uygulama analiz, reklam veya üçüncü taraf takip aracı içermez. Veriler üçüncü kişilerle paylaşılmaz."],
+      ["Silme", "Ayarlar > Veri silme ile tüm verilerini kalıcı olarak silebilirsin. Uygulamayı kaldırmak da verileri siler."],
+      ["Tıbbi uyarı", "Daily Dose bir hatırlatma ve takip aracıdır; tıbbi tavsiye vermez. Takviye veya ilaç kullanımı konusunda doktorunuza veya eczacınıza danışın."],
+      ["İletişim", "Sorular için: "]
+    ]
+  },
+  en: {
+    h1: "Privacy Policy", upd: "Last updated: October 28, 2026", back: "Home",
+    s: [
+      ["Your data stays on your device", "Supplement names, dose schedules, and intake logs are stored only on this device. Nothing is sent to any server, and no account is required."],
+      ["Notifications", "Reminders are created with the device's local notification system. No internet connection is needed."],
+      ["Purchases", "Daily Dose Pro is a one-time in-app purchase processed by Apple. We have no access to your payment details, and Apple does not pass any personal data to us. Your purchase status is verified on your device through Apple's StoreKit."],
+      ["Tracking and sharing", "The app contains no analytics, advertising, or third-party trackers. Your data is not shared with anyone."],
+      ["Deletion", "You can permanently delete all your data in Settings > Delete data. Uninstalling the app also removes the data."],
+      ["Medical disclaimer", "Daily Dose is a reminder and tracking tool. It does not provide medical advice. Talk to your doctor or pharmacist about supplement or medication use."],
+      ["Contact", "Questions: "]
+    ]
+  },
+  de: {
+    h1: "Datenschutzerklärung", upd: "Zuletzt aktualisiert: 28. Oktober 2026", back: "Startseite",
+    s: [
+      ["Deine Daten bleiben auf deinem Gerät", "Namen von Präparaten, Dosierungspläne und Einnahmeprotokolle werden nur auf diesem Gerät gespeichert. Es wird nichts an einen Server gesendet, und es ist kein Konto nötig."],
+      ["Mitteilungen", "Erinnerungen werden mit dem lokalen Mitteilungssystem des Geräts erstellt. Eine Internetverbindung ist nicht erforderlich."],
+      ["Käufe", "Daily Dose Pro ist ein einmaliger In-App-Kauf, der von Apple abgewickelt wird. Wir haben keinen Zugriff auf deine Zahlungsdaten, und Apple übermittelt uns keine personenbezogenen Daten. Der Kaufstatus wird auf deinem Gerät über Apples StoreKit überprüft."],
+      ["Tracking und Weitergabe", "Die App enthält keine Analyse-, Werbe- oder Tracking-Dienste von Dritten. Deine Daten werden nicht weitergegeben."],
+      ["Löschen", "Unter Einstellungen > Daten löschen kannst du alle Daten dauerhaft entfernen. Auch das Deinstallieren der App löscht die Daten."],
+      ["Medizinischer Hinweis", "Daily Dose ist ein Erinnerungs- und Tracking-Tool und gibt keine medizinische Beratung. Sprich mit deiner Ärztin, deinem Arzt oder deiner Apotheke zur Einnahme von Präparaten oder Medikamenten."],
+      ["Kontakt", "Fragen an: "]
+    ]
+  },
+  es: {
+    h1: "Política de privacidad", upd: "Última actualización: 28 de octubre de 2026", back: "Inicio",
+    s: [
+      ["Tus datos se quedan en tu dispositivo", "Los nombres de suplementos, los planes de dosis y los registros de tomas se guardan solo en este dispositivo. No se envía nada a ningún servidor y no se necesita cuenta."],
+      ["Notificaciones", "Los recordatorios se crean con el sistema de notificaciones local del dispositivo. No se necesita conexión a internet."],
+      ["Compras", "Daily Dose Pro es una compra única dentro de la app que procesa Apple. No tenemos acceso a tus datos de pago y Apple no nos transmite datos personales. El estado de la compra se verifica en tu dispositivo mediante StoreKit de Apple."],
+      ["Rastreo y uso compartido", "La app no incluye analítica, publicidad ni rastreadores de terceros. Tus datos no se comparten con nadie."],
+      ["Eliminación", "Puedes borrar todos tus datos de forma permanente en Ajustes > Borrar datos. Desinstalar la app también elimina los datos."],
+      ["Aviso médico", "Daily Dose es una herramienta de recordatorio y seguimiento. No ofrece consejo médico. Consulta a tu médico o farmacéutico sobre el uso de suplementos o medicamentos."],
+      ["Contacto", "Preguntas: "]
+    ]
+  },
+  fr: {
+    h1: "Politique de confidentialité", upd: "Dernière mise à jour : 28 octobre 2026", back: "Accueil",
+    s: [
+      ["Vos données restent sur votre appareil", "Les noms des compléments, les plans de doses et les journaux de prises sont stockés uniquement sur cet appareil. Rien n'est envoyé à un serveur et aucun compte n'est requis."],
+      ["Notifications", "Les rappels sont créés avec le système de notifications local de l'appareil. Aucune connexion internet n'est nécessaire."],
+      ["Achats", "Daily Dose Pro est un achat intégré unique traité par Apple. Nous n'avons pas accès à vos informations de paiement et Apple ne nous transmet aucune donnée personnelle. L'état de l'achat est vérifié sur votre appareil via StoreKit d'Apple."],
+      ["Suivi et partage", "L'app ne contient ni analyse, ni publicité, ni traceur tiers. Vos données ne sont partagées avec personne."],
+      ["Suppression", "Vous pouvez supprimer définitivement toutes vos données dans Réglages > Supprimer les données. Désinstaller l'app supprime aussi les données."],
+      ["Avertissement médical", "Daily Dose est un outil de rappel et de suivi. Il ne donne pas de conseil médical. Demandez conseil à votre médecin ou pharmacien pour l'usage de compléments ou de médicaments."],
+      ["Contact", "Questions : "]
+    ]
+  }
+};
+function setLang(l) {
+  const t = T[l];
+  document.documentElement.lang = l;
+  document.title = t.h1 + " · Daily Dose";
+  document.getElementById("h1").textContent = t.h1;
+  document.getElementById("upd").textContent = t.upd;
+  document.getElementById("back").textContent = t.back;
+  const body = document.getElementById("body");
+  body.innerHTML = "";
+  t.s.forEach(([h, p], i) => {
+    const h2 = document.createElement("h2"); h2.textContent = h;
+    const para = document.createElement("p"); para.textContent = p;
+    if (i === t.s.length - 1) { const a = document.createElement("a"); a.href = "mailto:" + MAIL; a.textContent = MAIL; para.appendChild(a); }
+    body.append(h2, para);
+  });
+  try { localStorage.setItem("lang", l); } catch (e) {}
+}
+const supported = Object.keys(T);
+let lang = null;
+try { lang = localStorage.getItem("lang"); } catch (e) {}
+if (!supported.includes(lang)) {
+  const nav = (navigator.language || "en").slice(0, 2).toLowerCase();
+  lang = supported.includes(nav) ? nav : "en";
+}
+const sel = document.getElementById("lang");
+sel.value = lang;
+sel.addEventListener("change", () => setLang(sel.value));
+setLang(lang);
+</script>
+</body>
+</html>
